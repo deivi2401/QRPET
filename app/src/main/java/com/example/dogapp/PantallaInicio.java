@@ -1,5 +1,4 @@
 package com.example.dogapp;
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -20,25 +19,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import java.util.Locale;
+public class PantallaInicio extends AppCompatActivity {
 
-public class MainActivity extends AppCompatActivity {
-    private Button InicioSesion;
+    private Button RegistroMascota, ConsultaMascota, Perfil, CerrarSesion;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inicio_sesion);
-        InicioSesion = findViewById(R.id.IniciarSesion);
+        setContentView(R.layout.pantalla_inicio);
+        RegistroMascota = findViewById(R.id.BotonRegistroMascota);
+        ConsultaMascota = findViewById(R.id.BotonConsulta);
+        Perfil = findViewById(R.id.BotonPerfil);
+        CerrarSesion = findViewById(R.id.Cerrar_Sesion);
 
-
-        InicioSesion.setOnClickListener(new View.OnClickListener() {
-
+        CerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, PantallaInicio.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(PantallaInicio.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
-
-
 }
