@@ -39,6 +39,14 @@ public class PantallaInicio extends AppCompatActivity {
             }
         });
 
+        RegistroMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PantallaInicio.this, RegistroMascota.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
