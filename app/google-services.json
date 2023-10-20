@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "132256985414",
+    "project_id": "qrpet-dea44",
+    "storage_bucket": "qrpet-dea44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132256985414:android:5d0d520f8525f1be36f547",
+        "android_client_info": {
+          "package_name": "com.example.dogapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYMbhJ7xqWap-YMGYK23tDGKF82hzJICQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
