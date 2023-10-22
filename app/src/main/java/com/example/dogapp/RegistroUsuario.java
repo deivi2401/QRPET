@@ -149,7 +149,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
     }
     //Reg
-    private void registerUser(String textFullName, String textEmail, String textDoB, String textMobile, String textPwd, String textGender) {
+    private void registerUser(String textFullName, String textEmail, String textDoB,String textGender, String textMobile, String textPwd) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(textEmail, textPwd).addOnCompleteListener(RegistroUsuario.this, new OnCompleteListener<AuthResult>() {
 
@@ -163,7 +163,7 @@ public class RegistroUsuario extends AppCompatActivity {
                     firebaseUser.updateProfile(profileChangeRequest);
 
                     //Se ingresan los datos del usuario en la base de datos de Firebase.
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textGender,textMobile);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textGender, textMobile);
 
                     //Se extraen la referencia del usuario de la base de datos de usuarios registrados
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");

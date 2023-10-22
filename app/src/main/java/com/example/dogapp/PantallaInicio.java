@@ -14,7 +14,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.dogapp.databinding.InicioSesionBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -47,6 +46,13 @@ public class PantallaInicio extends AppCompatActivity {
             }
         });
 
+        Perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PantallaInicio.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

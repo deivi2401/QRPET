@@ -13,8 +13,11 @@
         android:layout_marginStart="110dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="110dp"
+        android:layout_marginBottom="1dp"
         android:text="Consulta de Mascota"
+        app:layout_constraintBottom_toTopOf="@+id/BotonPerfil"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BotonRegistroMascota" />
 

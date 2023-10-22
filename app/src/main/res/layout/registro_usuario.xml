@@ -21,8 +21,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="144dp"
-                android:background="@color/purple_700">
+                android:layout_height="149dp"
+                android:background="@color/azul">
 
                 <TextView
                     android:id="@+id/textView_register_head"
@@ -102,7 +102,6 @@
                         android:hint="Ingrese su nombre completo"
                         android:inputType="textPersonName"
                         android:padding="6dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
@@ -151,7 +150,6 @@
                         android:hint="Ingrese su correo"
                         android:inputType="textEmailAddress"
                         android:padding="6dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
@@ -200,7 +198,6 @@
                         android:hint="Ingrese fecha de nacimiento"
                         android:inputType="date"
                         android:padding="6dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="10sp" />
 
                     <ImageView
@@ -331,7 +328,6 @@
                         android:hint="Ingrese su telefono(solo 10 digitos)"
                         android:inputType="phone"
                         android:padding="6dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
@@ -380,7 +376,6 @@
                         android:hint="Ingrese su contraseña"
                         android:inputType="textPassword"
                         android:padding="6dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
 
                     <ImageView
