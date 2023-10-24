@@ -35,8 +35,7 @@ import java.util.regex.Pattern;
 
 public class RegistroUsuario extends AppCompatActivity {
 
-    private EditText editTextRegisterNombreCompleto, editTextRegistrarEmail, editTextRegistrarDoB, editTextRegistrarTelefono,
-            editTextRegistrarContra, editTextRegistrarConfirmContra;
+    private EditText editTextRegisterNombreCompleto, editTextRegistrarEmail, editTextRegistrarDoB, editTextRegistrarTelefono, editTextRegistrarContra, editTextRegistrarConfirmContra;
     private ProgressBar progressBar;
     private RadioGroup radioGroupRegistrarGenero;
     private RadioButton radioButtonRegistrarGeneroSelec;
@@ -52,7 +51,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
         editTextRegisterNombreCompleto = findViewById(R.id.editText_register_full_name);
-        editTextRegistrarEmail = findViewById(R.id.editText_register_email);
+        editTextRegistrarEmail = findViewById(R.id.editText_edad_mascota);
         editTextRegistrarDoB = findViewById(R.id.editText_register_dob);
         editTextRegistrarTelefono = findViewById(R.id.editText_register_mobile);
         editTextRegistrarContra = findViewById(R.id.editText_register_password);
@@ -80,7 +79,7 @@ public class RegistroUsuario extends AppCompatActivity {
             }
         });
 
-        Button buttonRegister = findViewById(R.id.button_register);
+        Button buttonRegister = findViewById(R.id.button_register_pet);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@ package com.example.dogapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -129,9 +131,14 @@ public class UserProfileActivity extends AppCompatActivity {
                     textViewGender.setText(gender);
                     textViewMobile.setText(mobile);
 
-                    progressBar.setVisibility(View.GONE);
+                    //Set User DP(After user has uploaded)
+                    Uri uri = firebaseUser.getPhotoUrl();
 
+                    Picasso.with(UserProfileActivity.this).load(uri).into(imageView);
+                }else{
+                    Toast.makeText(UserProfileActivity.this, "Oh oh algo salio mal!", Toast.LENGTH_LONG).show();
                 }
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
