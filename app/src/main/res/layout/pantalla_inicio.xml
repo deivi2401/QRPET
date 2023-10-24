@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/Cerrar_Sesion"
+        android:id="@+id/BotonCerrar_Sesion"
         android:layout_width="125dp"
         android:layout_height="48dp"
         android:layout_marginStart="34dp"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="110dp"
         android:layout_marginBottom="135dp"
         android:text="Perfil"
-        app:layout_constraintBottom_toTopOf="@+id/Cerrar_Sesion"
+        app:layout_constraintBottom_toTopOf="@+id/BotonCerrar_Sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BotonConsulta" />

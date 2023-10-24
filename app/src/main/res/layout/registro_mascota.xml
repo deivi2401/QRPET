@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/azul">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="@color/azul">
+
+                <ImageButton
+                    android:id="@+id/BotonHome"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/_5694" />
+
+                <ImageView
+                    android:id="@+id/ImageView_UploadPetPhoto"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="131dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/animal_icon_144556" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/border"
+                android:padding="15dp">
+
+                <RelativeLayout
+                    android:id="@+id/RL_nombre_mascota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/imageViewNombre_Mascota"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/_pets_90407" />
+
+                    <TextView
+                        android:id="@+id/textView_register_full_nombre_mascota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imageViewNombre_Mascota"
+                        android:padding="6dp"
+                        android:text="Nombre de su mascota*" />
+
+                    <View
+                        android:id="@+id/divider_name"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/textView_register_full_nombre_mascota"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/darker_gray" />
+
+                    <EditText
+                        android:id="@+id/editText_register_full_nombre_mascota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_register_full_nombre_mascota"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/imageViewNombre_Mascota"
+                        android:background="@android:color/transparent"
+                        android:hint="Ingrese el nombre de la mascota"
+                        android:inputType="textPersonName"
+                        android:padding="6dp"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RL_nombre_mascota"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/imageViewEdad_Mascota"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_birthday" />
+
+                    <TextView
+                        android:id="@+id/textView_register_edad_mascota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imageViewEdad_Mascota"
+                        android:padding="6dp"
+                        android:text="Edad*" />
+
+                    <View
+                        android:id="@+id/divider_email"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/textView_register_edad_mascota"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/darker_gray" />
+
+                    <EditText
+                        android:id="@+id/editText_edad_mascota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_register_edad_mascota"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/imageViewEdad_Mascota"
+                        android:background="@android:color/transparent"
+                        android:hint="Ingrese la edad de su mascota"
+                        android:inputType="text"
+                        android:padding="6dp"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RL_email"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/imageViewMapa"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_mapa" />
+
+                    <TextView
+                        android:id="@+id/textView_register_dob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imageViewMapa"
+                        android:padding="6dp"
+                        android:text="Direccion del dueño*" />
+
+                    <View
+                        android:id="@+id/divider_dob"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/textView_register_dob"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/darker_gray" />
+
+                    <EditText
+                        android:id="@+id/editText_register_direccion"
+                        android:layout_width="239dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_register_dob"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/imageViewMapa"
+                        android:background="@android:color/transparent"
+                        android:hint="Ingrese Ubicacion"
+                        android:inputType="text"
+                        android:padding="6dp"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RL_dob"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/imageViewGender"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_gender" />
+
+                    <TextView
+                        android:id="@+id/textView_register_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imageViewGender"
+                        android:padding="6dp"
+                        android:text="Sexo de la mascota*" />
+
+                    <View
+                        android:id="@+id/divider_gender"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/textView_register_gender"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/darker_gray" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group_register_gender_mascota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_register_gender"
+                        android:layout_toEndOf="@id/imageViewGender"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_female_pet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:text="Hembra"
+                            android:textColor="#555555"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_male_pet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/white"
+                            android:text="Macho"
+                            android:textColor="#555555"
+                            android:textSize="12sp" />
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/button_register_pet"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RL_gender"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="Registrar Mascota" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:elevation="10dp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
