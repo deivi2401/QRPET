@@ -52,7 +52,7 @@ public class MapaPet extends FragmentActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_mapa_pet);
 
-        mapSearchView = findViewById(R.id.mapSearch);
+       //mapSearchView = findViewById(R.id.mapSearch);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MapaPet.this);
         getLastLocation();

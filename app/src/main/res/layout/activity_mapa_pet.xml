@@ -6,6 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="6dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginTop="6dp">
+
+    <fragment android:id="@+id/autocomplete_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        />
+
+</androidx.cardview.widget.CardView>
+
+
     <fragment
         android:id="@+id/map"
         class ="com.google.android.gms.maps.SupportMapFragment"
@@ -13,19 +29,6 @@
         android:layout_height="fill_parent"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:id="@+id/mapSearch"
-        map:iconifiedByDefault="false"
-        map:queryHint="Busque su direccion..."
-        android:focusable="false"
-        map:closeIcon="@drawable/baseline_clear_24"
-        map:searchIcon="@drawable/baseline_search_24"
-        android:background="@drawable/searchbar" />
 
 
 </RelativeLayout>
