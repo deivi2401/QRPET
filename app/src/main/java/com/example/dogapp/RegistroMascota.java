@@ -62,7 +62,7 @@ public class RegistroMascota extends AppCompatActivity {
         editTextDireccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegistroMascota.this, MapaPet.class);
+                Intent intent = new Intent(RegistroMascota.this, MapaPetV2.class);
                 Toast.makeText(RegistroMascota.this, "Seleccione su direccion", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }

@@ -21,7 +21,7 @@
             android:value="AIzaSyAhiDADuJ1ZnSEwS--Swipuqllk_V90Oys" />
 
         <activity
-            android:name=".MapaPet"
+            android:name=".MapaPetV2"
             android:exported="false"
             android:label="@string/title_activity_mapa_pet" />
         <activity

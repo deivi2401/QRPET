@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -17,6 +18,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -25,32 +27,57 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.dogapp.databinding.ActivityMapaPetBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.util.List;
 
-public class MapaPet extends FragmentActivity implements OnMapReadyCallback {
+public class MapaPet extends FragmentActivity {
 
     private final int FINE_PERMISSION_CODE = 1;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private GoogleMap mMap;
     private SearchView mapSearchView;
+    SupportMapFragment mapFragment;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapa_pet);
+        //setContentView(R.layout.activity_mapa_pet);
 
         mapSearchView = findViewById(R.id.mapSearch);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MapaPet.this);
         getLastLocation();
          //Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
+        Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                        .withListener(new PermissionListener() {
+                            @Override
+                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                getLastLocation();
+                            }
+
+                            @Override
+                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                permissionToken.continuePermissionRequest();
+
+                            }
+                        }).check();
 
         mapSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -59,19 +86,17 @@ public class MapaPet extends FragmentActivity implements OnMapReadyCallback {
                 String location = mapSearchView.getQuery().toString();
                 List<Address> addressList = null;
 
-                if (location != null) {
-                    Geocoder geocoder = new Geocoder(MapaPet.this);
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                    Address address = addressList.get(0);
-                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                Geocoder geocoder = new Geocoder(MapaPet.this);
+                try {
+                    addressList = geocoder.getFromLocationName(location, 1);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                 return false;
             }
 
@@ -80,11 +105,13 @@ public class MapaPet extends FragmentActivity implements OnMapReadyCallback {
                 return false;
             }
         });
-        mapFragment.getMapAsync(MapaPet.this);
     }
 
+    public static boolean isLocationEnabled(Context context){
 
-    private void getLastLocation() {
+        return true;
+    }
+    public void getLastLocation() {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
@@ -94,34 +121,24 @@ public class MapaPet extends FragmentActivity implements OnMapReadyCallback {
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if (location != null){
+                mapFragment.getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(@NonNull GoogleMap googleMap) {
+                        if(location != null) {
+                            LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+                            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location !");
+                            googleMap.addMarker(markerOptions);
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
 
-                    currentLocation = location;
-
-                    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                    mapFragment.getMapAsync(MapaPet.this);
-                }
+                        }
+                        else {
+                            Toast.makeText(MapaPet.this, "Please on your Location App Permissions", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }
 
 
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        LatLng usuario = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(usuario).title("Su ubicacion actual"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(usuario));
-    }
-
-   @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == FINE_PERMISSION_CODE){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED ){
-                getLastLocation();
-            } else {
-                Toast.makeText(this, "Se denego el permiso de localizacion, porfavor permita el uso de localizacion", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
 }
