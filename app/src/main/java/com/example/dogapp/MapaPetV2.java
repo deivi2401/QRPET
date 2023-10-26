@@ -9,13 +9,16 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -52,15 +55,26 @@ public class MapaPetV2 extends FragmentActivity implements OnMapReadyCallback {
     private static final int REQUEST_CODE = 101;
     SearchView searchView;
     private static String TAG = "Info";
+    private ImageButton botonRegreso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_pet);
         map = findViewById(R.id.map);
+        botonRegreso = findViewById(R.id.botonMapaRegreso);
         //searchView = findViewById(R.id.mapSearch);
         //searchView.clearFocus();
         fusedClient = LocationServices.getFusedLocationProviderClient(this);
         getLocation();
+
+        botonRegreso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapaPetV2.this, RegistroMascota.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         String apiKey = getString(R.string.api_key);
 
@@ -116,6 +130,8 @@ public class MapaPetV2 extends FragmentActivity implements OnMapReadyCallback {
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     assert supportMapFragment != null;
                     supportMapFragment.getMapAsync(MapaPetV2.this);
+                } else {
+                    Toast.makeText(MapaPetV2.this, "Su ubicacion actual no se pudo obtener", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -125,9 +141,9 @@ public class MapaPetV2 extends FragmentActivity implements OnMapReadyCallback {
         this.gMap = googleMap;
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("My Current Location");
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
-        googleMap.addMarker(markerOptions);
+        gMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+        gMap.addMarker(markerOptions);
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
