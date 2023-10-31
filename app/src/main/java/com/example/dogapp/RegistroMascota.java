@@ -23,6 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.dogapp.MapaPetV2;
+
+import java.util.Map;
 
 public class RegistroMascota extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class RegistroMascota extends AppCompatActivity {
     private RadioButton radioButtonRegistrarGeneroSelecPet;
     private Button RegistrarMascota;
     private ImageButton MenuPrincipal;
+    public String Direccion;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,7 @@ public class RegistroMascota extends AppCompatActivity {
         radioGroupRegistrarGeneroPet = findViewById(R.id.radio_group_register_gender_mascota);
         radioGroupRegistrarGeneroPet.clearCheck();
 
+        Direccion = getIntent().getExtras().getString("Direccion");
 
         MenuPrincipal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +64,11 @@ public class RegistroMascota extends AppCompatActivity {
             }
         });
 
+        if (Direccion != null){
+            editTextDireccion.setText(Direccion);
+        } else {
+            editTextDireccion.setText("null");
+        }
         editTextDireccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +77,6 @@ public class RegistroMascota extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         RegistrarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
