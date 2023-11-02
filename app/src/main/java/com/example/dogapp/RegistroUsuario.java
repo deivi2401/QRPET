@@ -147,14 +147,15 @@ public class RegistroUsuario extends AppCompatActivity {
         });
 
     }
+
     //Reg
-    private void registerUser(String textFullName, String textEmail, String textDoB,String textGender, String textMobile, String textPwd) {
+    private void registerUser(String textFullName, String textEmail, String textDoB, String textGender, String textMobile, String textPwd) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(textEmail, textPwd).addOnCompleteListener(RegistroUsuario.this, new OnCompleteListener<AuthResult>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(RegistroUsuario.this, "Se registro el usuario con exito", Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
@@ -194,18 +195,18 @@ public class RegistroUsuario extends AppCompatActivity {
                         }
                     });
 
-                } else{
+                } else {
                     try {
                         throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
+                    } catch (FirebaseAuthWeakPasswordException e) {
                         editTextRegistrarContra.setError("Su contraseña es muy debil, porfavor use combinaciones de letras y simbolos");
                         editTextRegistrarContra.requestFocus();
-                    } catch (FirebaseAuthInvalidCredentialsException e){
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
                         editTextRegistrarContra.setError("Su correo es invalido o ya esta en uso. Intentelo de nuevo");
                         editTextRegistrarContra.requestFocus();
-                    } catch (FirebaseAuthUserCollisionException e){
+                    } catch (FirebaseAuthUserCollisionException e) {
                         editTextRegistrarContra.setError("El usuario ya fue registrado con este correo. Use otro correo");
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(RegistroUsuario.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);

@@ -148,14 +148,14 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/border">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/imageViewMapa"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_mapa" />
+                        android:background="@drawable/ic_mapa" />
 
                     <TextView
                         android:id="@+id/textView_register_dob"
@@ -182,10 +182,10 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewMapa"
                         android:background="@android:color/transparent"
-                        android:hint="Ingrese Ubicacion"
+                        android:text="Ingrese Ubicacion..."
                         android:inputType="text"
                         android:padding="6dp"
-                        android:textSize="10sp" />
+                        android:textSize="13sp" />
 
                 </RelativeLayout>
 

@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PantallaInicio extends AppCompatActivity {
@@ -17,6 +19,8 @@ public class PantallaInicio extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+        firebaseAppCheck.installAppCheckProviderFactory(PlayIntegrityAppCheckProviderFactory.getInstance());
         setContentView(R.layout.pantalla_inicio);
         RegistroMascota = findViewById(R.id.BotonRegistroMascota);
         ConsultaMascota = findViewById(R.id.BotonConsulta);
@@ -35,6 +39,14 @@ public class PantallaInicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PantallaInicio.this, RegistroMascota.class);
+                startActivity(intent);
+            }
+        });
+
+        ConsultaMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PantallaInicio.this, Lista_Mascotas.class);
                 startActivity(intent);
             }
         });

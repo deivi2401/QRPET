@@ -83,7 +83,7 @@ public class MapaPetV2 extends FragmentActivity {
                     public void onClick(View view) {
                         Intent intent = new Intent(MapaPetV2.this, RegistroMascota.class);
                         intent.putExtra("Direccion", address);
-                        startActivity(intent);
+                        setResult(RESULT_OK, intent);
                         finish();
 
                     }
