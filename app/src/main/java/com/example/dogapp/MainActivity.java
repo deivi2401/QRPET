@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        ss.setSpan(clickableSpan,0, 9, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan,0, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(ss);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         //Mostrar y esconder la contraseña
