@@ -4,11 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,7 +19,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,9 +27,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.example.dogapp.MapaPetV2;
-
-import java.util.Map;
 
 public class RegistroMascota extends AppCompatActivity {
 
@@ -41,6 +37,7 @@ public class RegistroMascota extends AppCompatActivity {
     private Button RegistrarMascota;
     private ImageButton MenuPrincipal,Mapa;
     public String Direccion;
+    private ImageView FotoMascota;
 
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -68,6 +65,7 @@ public class RegistroMascota extends AppCompatActivity {
         MenuPrincipal = (ImageButton) findViewById(R.id.BotonHome);
         Mapa = (ImageButton) findViewById(R.id.imageViewMapa);
 
+        FotoMascota = findViewById(R.id.ImageView_UploadPetPhoto);
         editTextNombreMascota = findViewById(R.id.editText_register_full_nombre_mascota);
         editTextEdadMascota = findViewById(R.id.editText_edad_mascota);
         editTextDireccion = findViewById(R.id.editText_register_direccion);
@@ -76,6 +74,14 @@ public class RegistroMascota extends AppCompatActivity {
 
 
 
+        FotoMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegistroMascota.this,UploadPetPicActivity.class);
+                intent.putExtra("flag", "A");
+                startActivity(intent);
+            }
+        });
         MenuPrincipal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +112,8 @@ public class RegistroMascota extends AppCompatActivity {
                 String textEdadMascota = editTextEdadMascota.getText().toString();
                 String textDireccion = editTextDireccion.getText().toString();
                 String GeneroMascota;
+                String image;
+                String QR;
 
                 if (TextUtils.isEmpty(textNombreMascota)){
                     Toast.makeText(RegistroMascota.this, "Porfavor Ingrese el nombre de su mascota", Toast.LENGTH_LONG).show();
@@ -121,8 +129,10 @@ public class RegistroMascota extends AppCompatActivity {
                     editTextDireccion.requestFocus();
                 }else {
                     GeneroMascota = radioButtonRegistrarGeneroSelecPet.getText().toString();
+                    image = "Imagen mascota";
+                    QR = "CodigoQR";
                     progressBar.setVisibility(View.VISIBLE);
-                    registerPet(textNombreMascota,textEdadMascota,textDireccion,GeneroMascota);
+                    registerPet(textNombreMascota,textEdadMascota,textDireccion,GeneroMascota,image,QR);
                 }
 
             }
@@ -133,12 +143,12 @@ public class RegistroMascota extends AppCompatActivity {
     }
 
 
-    private void registerPet(String textNombreMascota, String textEdadMascota, String textDireccion, String generoMascota) {
+    private void registerPet(String textNombreMascota, String textEdadMascota, String textDireccion, String generoMascota, String image, String QR) {
         FirebaseUser usuarioActual = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users").child(usuarioActual.getUid()).child("Mascotas").child(textNombreMascota);
 
 
-        ReadWritePetDetails writePetDetails = new ReadWritePetDetails(textNombreMascota, textEdadMascota, textDireccion,generoMascota);
+        ReadWritePetDetails writePetDetails = new ReadWritePetDetails(textNombreMascota, textEdadMascota, textDireccion,generoMascota,image,QR);
 
         referenceProfile.setValue(writePetDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
