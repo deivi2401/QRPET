@@ -4,83 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#004D70">
+    android:background="@color/white">
 
     <Button
         android:id="@+id/BotonConsulta"
         android:layout_width="191dp"
         android:layout_height="54dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="1dp"
         android:text="Consulta de Mascota"
-        app:layout_constraintBottom_toTopOf="@+id/BotonPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BotonRegistroMascota" />
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="376dp" />
 
     <Button
         android:id="@+id/BotonRegistroMascota"
         android:layout_width="191dp"
         android:layout_height="54dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="110dp"
         android:text="Registro de Mascota"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="188dp" />
 
     <Button
-        android:id="@+id/BotonCerrar_Sesion"
+        android:id="@+id/Cerrar_Sesion"
         android:layout_width="125dp"
         android:layout_height="48dp"
         android:layout_marginStart="34dp"
         android:layout_marginEnd="253dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="36dp"
         android:backgroundTint="#000000"
         android:text="Cerrar Sesion"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <Button
         android:id="@+id/BotonPerfil"
         android:layout_width="191dp"
         android:layout_height="54dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="135dp"
         android:text="Perfil"
-        app:layout_constraintBottom_toTopOf="@+id/BotonCerrar_Sesion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BotonConsulta" />
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="570dp" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="160dp"
-        android:layout_height="159dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="126dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/_56212" />
+        android:layout_width="96dp"
+        android:layout_height="109dp"
+        app:srcCompat="@drawable/_56212"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="448dp" />
 
-    <Button
-        android:id="@+id/botonAbrirEscaner"
-        android:layout_width="191dp"
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="222dp"
+        android:layout_height="162dp"
+        app:srcCompat="@drawable/registro"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="196dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/consulta"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="226dp" />
+
+    <LinearLayout
+        android:layout_width="432dp"
         android:layout_height="54dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="10dp"
-        android:text="Leer codigo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BotonPerfil" />
+        android:background="#0A30EF"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="-11dp"
+        tools:layout_editor_absoluteY="1dp"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
