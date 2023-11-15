@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,7 @@ public class Lista_Mascotas extends AppCompatActivity {
     ArrayList<Mascotas> list;
 
     private ImageView FotoMascota;
+    private FloatingActionButton Home;
 
     private boolean isLoading=false;
     @SuppressLint("MissingInflatedId")
@@ -39,6 +41,7 @@ public class Lista_Mascotas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_mascotas);
 
+        Home = findViewById(R.id.Floating_Home);
         recyclerView = findViewById(R.id.lista_mascotas);
         FirebaseUser usuarioActual = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance().getReference("Registered Users").child(usuarioActual.getUid()).child("Mascotas");
@@ -68,6 +71,13 @@ public class Lista_Mascotas extends AppCompatActivity {
             }
         });
 
+        Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Lista_Mascotas.this, PantallaInicio.class);
+                startActivity(intent);
+            }
+        });
     }
     private void loadData(){
 

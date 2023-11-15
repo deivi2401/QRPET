@@ -40,13 +40,7 @@ public class PantallaInicio extends AppCompatActivity {
         LectorQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                IntentIntegrator integrador = new IntentIntegrator(PantallaInicio.this);
-                integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
-                integrador.setPrompt("Lector QR");
-                integrador.setCameraId(0);
-                integrador.setBeepEnabled(true);
-                integrador.setBarcodeImageEnabled(true);
-                integrador.initiateScan();
+                Intent intent = new Intent(PantallaInicio.this, EscanerQR.class);
             }
         });
 
